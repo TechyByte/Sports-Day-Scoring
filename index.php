@@ -3857,7 +3857,7 @@ switch($curpage)
 			</div>
 			<!-- System Info Box -->
 			<div id="systembox">
-				&copy;2012 James Wallis<br>
+				&copy;2015 Tech Team<br>
 				All rights reserved.<br><br>
 				Version 1.04
 			</div>
