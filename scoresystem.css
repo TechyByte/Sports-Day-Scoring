@@ -1,0 +1,483 @@
+/* Page body default */
+body
+{
+	background-color: #e0e0e0;
+	color: #000000;
+	
+	font-family: Helvetica, Arial, Sans-Serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+}
+
+/* Default paragraphs */
+p
+{
+	font-size: 1em;
+	
+	margin: 0px 0px 16px 0px;
+}
+
+/* Default horizontal rules */
+hr
+{
+	background-color: #000000;
+	color: #000000;
+	
+	border-style: none;
+	
+	height: 1px;
+}
+
+/* Default links */
+a:link
+{
+	color: #000000;
+	
+	text-decoration: underline;
+}
+
+a:visited
+{
+	color: #000000;
+	
+	text-decoration: underline;
+}
+
+a:hover
+{
+	color: #000000;
+	
+	text-decoration: none;
+}
+
+a:active
+{
+	color: #000000;
+	
+	text-decoration: underline;
+}
+
+/* Default divs */
+div
+{
+	font-size: 1em;
+	
+	background-color: transparent;
+	
+	border-style: none;
+	
+	margin: 0px;
+	
+	padding: 0px;
+}
+
+/* Default tables */
+table, td, th
+{
+	text-align: left;
+	
+	border-style: none;
+	border-collapse: collapse;
+	
+	padding: 0px;
+	
+	margin: 0px;
+}
+
+/* Form tables */
+table.formtable
+{
+}
+
+table.formtable td
+{
+	font-weight: normal;
+	
+	padding-right: 10px;
+}
+
+table.formtable td.submitcell
+{
+	text-align: right;
+}
+
+table.formtable th
+{
+	font-weight: bold;
+	
+	padding-right: 15px;
+}
+
+/* Panel tables */
+table.paneltable
+{
+}
+
+table.paneltable td
+{
+	font-weight: normal;
+}
+
+table.paneltable th.sectionheader
+{
+	font-weight: bold;
+}
+
+table.paneltable th.itemlabel
+{
+	font-weight: normal;
+	
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+/* Option tables */
+table.optiontable
+{
+}
+
+table.optiontable td
+{
+	font-weight: normal;
+	
+	padding-left: 30px;
+	padding-bottom: 20px;
+}
+
+table.optiontable th
+{
+	font-weight: bold;
+}
+
+/* Data tables */
+table.datatable
+{
+}
+
+table.datatable tr.darkgrey, th.darkgrey, td.darkgrey
+{
+	background-color: #808080;
+}
+
+table.datatable tr.lightgrey, th.lightgrey, td.lightgrey
+{
+	background-color: #e0e0e0;
+}
+
+table.datatable tr.green, th.green, td.green
+{
+	background-color: #00a000;
+}
+
+table.datatable tr.red, th.red, td.red
+{
+	background-color: #ff0000;
+}
+
+table.datatable tr.highlighted, th.highlighted, td.highlighted
+{
+	background-color: #ffa000;
+}
+
+table.datatable td
+{
+	font-weight: normal;
+	
+	padding-right: 2px;
+	padding-left: 2px;
+}
+
+table.datatable td.wide
+{
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+table.datatable th
+{
+	font-weight: bold;
+	
+	padding-right: 2px;
+	padding-left: 2px;
+}
+
+/* Bordered table variant */
+table.bordered, table.bordered td, table.bordered th
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000000;
+}
+
+/* Explicity borderless table variant (for nested tables) */
+table.borderless, table.borderless td, table.borderless th
+{
+	border-style: none;
+}
+
+/* Default form fieldsets */
+fieldset
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000000;
+	
+	width: 100%
+}
+
+/* Error message text */
+.errormessage
+{
+	color: #ff0000;
+}
+
+/* Success message text */
+.successmessage
+{
+	color: #008000;
+}
+
+/* Header div */
+div#header
+{
+	background-color: #c0c0c0;
+	
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000000;
+	
+	position: absolute;
+	top: 0%;
+	left: 1%;
+	
+	width: 98%;
+	height: 75px;
+	min-width: 800px;
+}
+
+/* Header main title */
+div#header h1
+{
+	font-weight: bold;
+	font-size: 2.5em;
+	font-variant: small-caps;
+	
+	margin: 15px;
+}
+
+/* Container div */
+div#container
+{
+	background-color: #ffffff;
+	
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000000;
+	
+	position: absolute;
+	top: 75px;
+	left: 1%;
+	
+	width: 98%;
+	min-width: 800px;
+}
+
+/* Side bar div */
+div#sidebar
+{
+	float: left;
+	
+	width: 15%;
+	height: auto;
+}
+
+/* Menu box div */
+div#menubox
+{
+	border-style: none solid solid none;
+	border-width: 1px;
+	border-color: #000000;
+	
+	padding: 10px 10% 10px 10%;
+	
+	width: 80%;
+}
+
+/* Menu box link list */
+div#menubox ul
+{
+	list-style-type: none;
+	
+	margin: 0px;
+	
+	padding: 0px;
+}
+
+div#menubox li
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+/* Normal menu links */
+div#menubox a.menunormal
+{
+}
+
+/* Selected menu links */
+div#menubox a.menuselected
+{
+	font-style: italic;
+	font-weight: bold;
+	
+	margin-left: 2px;
+}
+
+/* User box div */
+div#userbox
+{
+	font-size: 0.75em;
+	
+	border-style: none solid solid none;
+	border-width: 1px;
+	border-color: #000000;
+
+	padding: 20px 10% 20px 10%;
+	
+	width: 80%;
+}
+
+/* System info box div */
+div#systembox
+{
+	font-size: 0.75em;
+	
+	border-style: none solid solid none;
+	border-width: 1px;
+	border-color: #000000;
+
+	padding: 20px 10% 20px 10%;
+	
+	width: 80%;
+}
+
+/* Page content div */
+div#pagecontent
+{
+	padding: 10px 1.5% 10px 1.5%;
+	
+	float: left;
+	
+	width: 80%;
+	height: auto;
+}
+
+/* Page content title */
+div#pagecontent h1
+{
+	font-weight: bold;
+	font-size: 2em;
+	
+	margin: 0px;
+}
+
+/* Page content return to parent page link */
+div#pagecontent a.returnlink
+{
+	font-size: 0.75em;
+}
+
+/* Panel help button div */
+div#helpbutton
+{
+	float: right;
+	
+	position: absolute;
+	top: 2px;
+	right: 2px;
+}
+
+/* Help page section heading */
+span.userguide h2
+{
+	font-weight: bold;
+	font-size: 1.5em;
+	
+	margin: 15px 0px 5px 0px;
+}
+
+/* Help page sub-heading */
+span.userguide h3
+{
+	font-weight: bold;
+	font-size: 1em;
+	
+	margin: 10px 0px 0px 0px;
+}
+
+/* Help page contents list */
+span.contentslist ul
+{
+	list-style-type: none;
+}
+
+span.contentslist li
+{
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+/* Progress bar main div */
+div.progressbar
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000000;
+	
+	width: 100%;
+}
+
+/* Progress bar fill div */
+div.progressbarfill
+{
+	background-color: #008000;
+	
+	font-weight: bold;
+	
+	overflow: visible;
+}
+
+/* Live results panel content container div */
+div.resultcontainer
+{
+	background-color: #e0e0e0;
+	
+	padding: 5px 5px 5px 5px;
+	
+	width: 100%;
+}
+
+/* Live results panel content header link */
+div.resultcontainer a.headerlink
+{
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* Live results panel inner content div */
+div.resultcontainer div.contentbox
+{
+}
+
+/* Live results panel lists */
+div.resultcontainer ul
+{	
+	margin: 0px;
+}
+
+div.resultcontainer li
+{
+	margin-top: 2px;
+	margin-bottom: 2px;
+}

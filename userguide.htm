@@ -1,0 +1,895 @@
+<span class="userguide">
+<a name="contents"><h2>Contents</h2></a>
+<span class="contentslist">
+<ul>
+<li>
+	<a href="#intro"><b>Introduction</b></a>
+	<ul>
+		<li><a href="#intro-setup">How the system is set up</a></li>
+		<li><a href="#intro-access">Accessing the system</a></li>
+		<li><a href="#intro-represent">How the system represents sporting competitions</a></li>
+		<li><a href="#intro-developcompo">How to work out if a Competition is supported by the system</a></li>
+	</ul>
+</li>
+<li>
+	<a href="#install"><b>Installing the System</b></a>
+	<ul>
+		<li><a href="#install-serverreq">Server Requirements</a></li>
+		<li><a href="#install-db">Installing the Database</a></li>
+		<li><a href="#install-files">Installing the Program Files</a></li>
+		<li><a href="#install-start">Getting Started</a></li>
+	</ul>
+</li>
+<li>
+	<a href="#maintain"><b>Maintaining the System</b></a>
+	<ul>
+		<li><a href="#maintain-backup">Backing up the database</a></li>
+		<li><a href="#maintain-adminfix">Fixing deleted administrator users</a></li>
+	</ul>
+</li>
+<li>
+	<a href="#use"><b>Using the System</b></a>
+	<ul>
+		<li><a href="#use-login">Logging In and Out</a></li>
+		<li><a href="#use-accountsettings">Account Settings</a></li>
+		<li><a href="#use-welcome">Landing Page</a></li>
+		<li><a href="#use-admin">Admin Panel</a></li>
+		<li><a href="#use-groupsettings">User Group Settings</a></li>
+		<li><a href="#use-deletegroup">Delete User Group</a></li>
+		<li><a href="#use-usersettings">User Settings</a></li>
+		<li><a href="#use-deleteuser">Delete User</a></li>
+		<li><a href="#use-logs">System Logs</a></li>
+		<li><a href="#use-compmanage">Competition Management Panel</a></li>
+		<li><a href="#use-templatesettings">Competition Template Settings</a></li>
+		<li><a href="#use-deletetemplate">Delete Competition Template</a></li>
+		<li><a href="#use-daysettings">Day Settings</a></li>
+		<li><a href="#use-adjustday">Adjust Day Components</a></li>
+		<li><a href="#use-deleteday">Delete Day</a></li>
+		<li><a href="#use-managerecords">Manage Records</a></li>
+		<li><a href="#use-scoreentry">Score Entry</a></li>
+		<li><a href="#use-editscore">Edit Event Scores</a></li>
+		<li><a href="#use-liveresults">Live Results</a></li>
+		<li><a href="#use-stats">Statistical Analysis</a></li>
+		<li><a href="#use-help">Getting Help</a></li>
+	</ul>
+</li>
+<li>
+	<a href="#faq"><b>Quick Starters, Frequently Asked Questions, Troubleshooting and Other Miscellany</b></a>
+	<ul>
+		<li><a href="#faq-browsers">What web-browsers is the system supported on?</a></li>
+		<li><a href="#faq-adminfail">Help! I have lost access to / accidentally deleted all of the User Accounts with administrator access on the system!</a></li>
+		<li><a href="#faq-access">Help! I cannot access part of the system!</a></li>
+		<li><a href="#faq-prepare">How do I set up the system before a competition starts?</a></li>
+		<li><a href="#faq-score">How do I score Events?</a></li>
+		<li><a href="#faq-results">How do I find out what the current Scores are / what Records have been broken / who has won the 'Victor Ludorum'?</a></li>
+		<li><a href="#faq-records">How do I get a list of all the current Records for a competition?</a></li>
+		<li><a href="#faq-sharing">How do I share data from the system after a competition, such as if a staff member wants access?</a></li>
+	</ul>
+</li>
+<li>
+	<a href="#contact"><b>Contact Details</b></a>
+</li>
+</ul>
+</span>
+ 
+<a name="intro"><h2>Introduction</h2></a>
+<p>
+This User Guide will aid you in understanding how this Scoring System works and how it should be used.
+Since the system is quite large and has many sections to describe, you may find it useful to consult
+the <a href="#contents">Contents</a> page or the <a href="#faq">Frequently Asked Questions</a> section
+if you have a specific query.
+</p>
+<p>
+Otherwise, this first part of the User Guide will cover the general basics of the system, which should
+provide some useful background on common terms and how the system represents sporting competitions.
+</p>
+
+<a name="intro-setup"><h3>How the system is set up</h3></a>
+<p>
+The system is web-based, meaning it requires a web-browser to use it. While this means that the system
+could be run over the internet, it does not have to be - indeed, for private school use, it can be run
+over a local server to be accessed by a limited number of computers, or indeed can be run on a single
+computer, requiring no internet connection to run. Note that while this Guide will explain how to set
+the system up on a server, the choice of server setup itself is up to the person in charge of running
+the system.
+</p>
+<p>
+The system consists of two main parts: the system itself, which handles all of the processing and user
+interaction, and the database, which contains all of the system's data and is accessed by the main system
+in order to display information.
+</p>
+
+<a name="intro-access"><h3>Accessing the system</h3></a>
+<p>
+Access to the system is controlled by User Accounts, so that only authorised persons may use the system.
+These Accounts are organised into User Groups, which store access permissions to the system. Access
+permissions define what sections of the site a User in that Group is allowed and not allowed to use, which
+prevents Users from accessing important administration tools in the system that they should not be allowed
+to use.
+</p>
+<p>
+Users who are not logged in are only able to access the logging in page. Users who are logged in can all
+access the system's default landing page and the help files, however all other pages are controlled by
+permissions. Each single sidebar link is controlled by a permission flag; these are: 'Admin Panel',
+'Manage Days', 'Edit Scores', 'View Scores' and 'Analyse Statistics'.
+</p>
+
+<a name="intro-represent"><h3>How the system represents sporting competitions</h3></a>
+<p>
+This system is designed to be able to support a wide variety of sporting competitions, rather than being
+limited to a pre-defined selection. However, in order for the system to be able to handle the task of
+scoring a competition, that competition must conform to the following standard, which is how the system
+represents competitions as data:
+</p>
+<p>
+A Competition is an overall sporting engagement in which there are several Teams, each with their own
+unique group of Competitors. These Competitors may also (optionally) be classified into Subgroups (each
+Competitor may only have one Subgroup), which are used for certain data analysis and organisational tasks.
+In the context of an in-school sporting event, Teams represent Houses and Subgroups represent Year Groups.
+</p>
+<p>
+Then, there are many Events which make up the Competition. Each Event only occurs once, and is entered by
+a set number of Competitors from each Team (this number is fixed for an individual Event - however different
+Events may have different numbers; additionally, an Event can be limited to be only open to certain Subgroups).
+Since many Events may be scored in a similar way, the Competition also has a set of Scoring Schemes, which
+define how many points each finishing position is worth, and what the units and value order of results are.
+Each Event can use a single Scoring Scheme.
+</p>
+<p>
+A Competition also has a soft limit on how many Events an individual Competitor may enter ('soft' meaning
+that infractions are warned about, but are not prevented from happening). It is possible to mark certain Events
+as not counting towards this limit. Finally, there is a set of Records (one for each Event) stating what the
+current Record to beat is for that Event.
+</p>
+<p>
+That is a general idea of what a Competition must be in order to be scored using this system. So long as a
+real-world sporting competition can be adapted to fit those rules, it is valid for scoring by this system.
+On a more specific level, the representation of Competitions is split into two halves: Competition Templates
+and Days.
+</p>
+<p>
+As its name suggests, a Competition Template contains all of the settings that define a Competition that
+may be repeated on many separate occasions (such as annual competitions like Sports Day or the Swimming
+Gala). Once a Competition Template has been defined, Days can be derived from it. A Day is a specific instance
+of a Template - for instance, there might be a Sports Day Template, but Sports Day 2012 or Sports Day 2013
+would each be an individual Day. The Day stores data unique to itself, such as Team Lists. An important
+feature is that changing a Competition Template does not retroactively alter existing Days - Days are
+essentially 'copies' of their Template at the time of creation; after that point, any changes to the
+Template will only apply to future Days. This allows the layout of a Competition to be changed (such as
+adding Events) without invalidating existing data. For this reason, once a Day has been created, its structure
+(total numbers of Teams, Subgroups, Scoring Schemes and Events, and how they interact with oneanother) cannot
+be modified without deleting the Day, modifying the Template, then recreating the Day. It is possible to rename
+certain aspects of a Day defined in the Template, however, as these do not affect the structure of the data.
+The system can be scoring only one Day at a time - this is set in the Competition Management section of the
+program, and is reflecting in the scoring and results parts of the system.
+</p>
+
+<a name="intro-developcompo"><h3>How to work out if a Competition is supported by the system</h3></a>
+<p>
+It may be difficult at first to work out if a sporting competition can be represented by the system,
+given the above description. This section will explain how to convert a real world competition into a
+form that the system can recognise - simply follow these instructions (note that if you cannot represent
+your competition by using these steps, then your competition probably cannot be represented by the system
+- sorry!).
+</p>
+<dl>
+<dt>Step 1: Decide Teams</dt>
+<dd>
+First, make a list of all the Teams taking part in the Competition. Teams are collections of Competitors,
+taking their scores from their Competitors, and it is for the Teams that the final rankings are decided.
+There must be at least one Team per Competition (you can have only one Team if for some reason you cannot
+/ do not want to split up a single body of competitors, but this system is most useful for Competitions
+with multiple Teams). Typically, a Team might be a House or a visiting school.
+</dd>
+<dt>Step 2: Decide Subgroups</dt>
+<dd>
+Now, make a list of all the Subgroups in the Competition. Every Competitor, regardless of Team, must be
+classed into a single Subgroup. The job of Subgroups is twofold: they make it possible to produce a high
+score for each Subgroup, and Events can be set to be only available to certain Subgroups. There must be
+at least one Subgroup per Competition - if you do not want any Subgroups, simply create a single Subgroup
+(called 'All' or something similar) and assign all Competitors to that. Typically, a Subgroup might be a
+Year Group.
+</dd>
+<dt>Step 3: Decide Events</dt>
+<dd>
+You should now create a list of every Event that takes place during the Competition. Should there be an
+Event that is run multiple times for different Subgroups, that Event should be listed once for every
+Subgroup that enters it - for instance, on Sports Day you might have a Year 7 High Jump, a Year 8 High
+Jump, etc... Each of these would be a separate Event. The Competition must have at least one Event.
+</dd>
+<dt>Step 4: Decide Scoring Schemes</dt>
+<dd>
+Finally, take your list of Events and group them into similar sets. All of the Events in a set should
+have the same number of Competitors entered by each Team, have the same types of results, which are
+taken in the same units and ordered in the same direction (i.e. first place should always be either
+the highest or the lowest value for the whole set, but not both). Additionally, the number of points
+that each finishing position is worth should be consistent across the set. Once you have made these
+sets, record each one as a Scoring Scheme, detailing the shared features of the scoring method behind
+each Event.
+</dt>
+</dl>
+<p>
+If you can represent your Competition in this way, then it can be managed using this system!
+</p>
+ 
+<a name="install"><h2>Installing the System</h2></a>
+<p>
+Before the system can be used, it must first be installed. This part of the User Guide covers how to
+set up the system for the first time.
+</p>
+
+<a name="install-serverreq"><h3>Server Requirements</h3></a>
+<p>
+The system must be installed on a web-server, although it is not required for this to be connected to
+the internet, as the system may be accessed over a local network or from the server itself. However,
+the server should have the latest version of PHP and MySQL, and preferably some sort of GUI-based
+management system for the database (however, if you are proficient in writing SQL queries, this will
+not be essential).
+</p>
+<p>
+Any server that fits this description will do, however we recommend XAMPP
+(<a href="http://www.apachefriends.org/en/xampp.html">http://www.apachefriends.org/en/xampp.html</a>)
+as a good choice of server package. XAMPP is a free, convenient tool for installing and managing a PHP
+web-server and MySQL database system, as well as other server tools. It can be run from any computer
+rather than a dedicated server, and a portable version (i.e. version that runs from a memory stick) is
+available. If you lack experience with running a server, do not want to get external internet hosting,
+or just want a simple server setup, then XAMPP is the way to go. However, it is not compulsory to run
+the system.
+</p>
+<p>
+Once you have your server set up and configured (as per its instructions), you can install the system
+on it.
+</p>
+
+<a name="install-db"><h3>Installing the Database</h3></a>
+<p>
+The system is comprised of two sections: the program files and the database. Before we install the main
+system, we shall first set up the database so it is ready for the system to use. Open your database
+management software (if you are using XAMPP, or possibly some other hosting package, this will likely
+be phpmyadmin, however other solutions or even the SQL console will work) and Import the file '<i>setup.sql</i>'
+which is provided with this system. This setup file will create the entire database, its tables, user,
+and basic data in a single action. If this succeeds with no errors then you may proceed to the next step.
+If a problem is encountered, make sure your server is correctly set up and try again. If it still fails,
+use the <a href="#contact">contact details</a> at the end of this Guide to request technical support.
+</p>
+
+<a name="install-files"><h3>Installing the Program Files</h3></a>
+<p>
+With the database fully set up, the program files can now be installed. Create a folder in the server
+where you want the system to be accessed from - you may wish to consult your server's manual for
+possible locations. Then copy the entire contents of the '<i>scoresystem</i>' folder provided into this
+location on the server. The system should now be set up! To check it works, open your browser and enter
+the address of your server and the location you installed it at. You should be presented with the log
+in page of the system.
+</p>
+<p>
+If for some reason you do not see this page, make sure your server is configured correctly and try again,
+or use the <a href="#contact">contact details</a> at the end of this Guide to request technical support.
+</p>
+
+<a name="install-start"><h3>Getting Started</h3></a>
+<p>
+Although the next section of this Guide covers how to actually use the system, it is worth noting that
+the system comes with a default User Account and User Group set up. The username of this account is
+'<i>root</i>' and the password is '<i>root</i>' (this can be changed). This account belongs to the User
+Group '<i>Administrator</i>', which had permission to do anything on the system. Use this account to log
+in for the first time, and to create further User Accounts and User Groups.
+</p>
+
+<a name="maintain"><h2>Maintaining the System</h2></a>
+<p>
+While most normal operation of the system can be handled through the system itself once it has been
+installed, there are a handful of tasks that can only be done by a technical user behind the scenes.
+Such tasks are discussed now.
+</p>
+
+<a name="maintain-backup"><h3>Backing up the database</h3></a>
+<p>
+To ensure that data is not lost permanently in the event of some accident or mishap, it is important
+to take regular backups of the database. Then, in the event that the original data is lost of corrupted,
+the backup can be restored and the data retrieved.
+</p>
+<p>
+Taking and restoring backups is made incredibly easy with database software such as phpmyadmin (which
+comes with many web-server systems, including XAMPP). To back up the database, open your database
+management software and chose to export the system's database. This will produce an SQL dump. Save this
+file to wherever you want to keep your backup. It is important when creating the SQL dump that you make
+sure that all settings are set to produce a full copy of the database, not just one part of it.
+</p>
+<p>
+To restore the backup, drop any existing versions of the tables and content in the system's database.
+Depending on the level of detail recorded in the backup SQL dump, it may be neccessary to drop the actual
+database as well - note that if you do this, you may need to recreate the SQL user to go with the database
+(SQL code for this can be found in setup.sql). You can then import the SQL dump. This will rebuild the
+entire database exactly how it was when the backup was taken.
+</p>
+
+<a name="maintain-adminfix"><h3>Fixing deleted administrator users</h3></a>
+<p>
+While the system comes with an administrator account set up by default for you to start using the system,
+it is not impossible that you could accidentally delete or lose access to the only account with administrator
+access on the system, effectively locking yourself out. If you do this, it is possible to create a new
+User Account and User Group by directly inserting them into the database.
+</p>
+<p>
+First, look in the '<i>usergroups</i>' table for an administrator User Group entry. This should have the
+field '<i>perm_admin</i>' set to 1. If you can find one, note down the value of the '<i>ug_id</i>' field.
+If you cannot find one, then insert a new row into the '<i>usergroups</i>' table, setting the following
+values: '<i>name</i>' = '<i>Administrator</i>' (or whatever you want to call the new User Group) and
+'<i>perm_admin</i>' = <i>1</i>, or edit an existing User Group to have '<i>perm_admin</i>' equal to <i>1</i>.
+The values of the other '<i>perm_...</i>' fields do not matter, but since this is an administrative
+User Group you may wish to set them all to <i>1</i>. If you had to create a new User Group, take note of its
+'<i>ug_id</i>' field.
+</p>
+<p>
+Secondly, if your User Account still exists in the '<i>users</i>' table, change its '<i>ug_id</i>' field
+to the value you noted down. If the User does not exist, then create a new row in '<i>users</i>' with the
+following values: '<i>name</i>' = '<i>New User</i>' (or whatever you want to call the new User),
+'<i>password</i>' = <i>SHA1('password')</i> (this will give the User the password 'password') and
+'<i>ug_id</i>' = the noted value of '<i>ug_id</i>'.
+</p>
+<p>
+This process will create a new administrator User Account.
+</p>
+ 
+<a name="use"><h2>Using the System</h2></a>
+<p>
+With the system set up and ready to use, we shall now cover how each part of the system works and how
+they should be used. These are best used as guidance while using a panel - if you require instructions
+on carrying out a particular, broad task, then see the next section.
+</p>
+
+<a name="use-login"><h3>Logging In and Out</h3></a>
+<p>
+If you are not logged in and try to access the system, you will be prompted to log in. Simply enter
+your username and password to gain access to the system.
+</p>
+<p>
+When you are finished, click 'Log Out', which is located in the lower box on the left menu bar.
+</p>
+
+<a name="use-accountsettings"><h3>Account Settings</h3></a>
+<p>
+Here you can see your name and User Group, and change your password. To change your password, enter
+your old password and a new password (the two cannot be the same), and confirm the new password.
+This change will take immediate effect.
+</p>
+
+<a name="use-welcome"><h3>Landing Page</h3></a>
+<p>
+This is the default page of the system. If there are any warnings the system has generated about the
+currently active Day, these will be displayed here.
+</p>
+
+<a name="use-admin"><h3>Admin Panel</h3></a>
+<p>
+This panel acts as a hub for the management of the system as a whole. From here you can manage User
+Groups, User Accounts, and the system logs.
+</p>
+<p>
+To create a new User Group or Account, enter a name to call it by and click the 'Create' button.
+This will create the item and take you to a Settings panel to fill in its details.
+</p>
+<p>
+To modify an existing User Group or Account, select it from the drop-down list and click the 'Edit'
+button. This will take you to the same Settings panel as used when creating an item.
+</p>
+<p>
+To delete an existing User Group or Account, select it from the drop-down list and click the 'Delete'
+button. This will require confirmation, as once performed it <i>cannot</i> be undone.
+</p>
+<p>
+To access the system logs, click the link provided.
+</p>
+
+<a name="use-groupsettings"><h3>User Group Settings</h3></a>
+<p>
+This panel allows you to modify the settings of a User Group that already exists or has just been created.
+There are two parts: the name of the User Group and its permissions. Permissions are granted if the
+checkbox next to them is ticked, or are withheld otherwise. Once you have made the necessary changes,
+click the 'Save Changes' button to save your modifications. Leaving this page without saving will cancel
+any unsaved changes.
+</p>
+<p>
+<i>Caution: Ensure there is at least one User Group with Administrator permissions at all times, to ensure
+all of the system is always accessible without needing to directly modify the database! Do not change
+your User Group to one without Administrator permissions or you will lose access to the Admin Panel!</i>
+</p>
+
+<a name="use-deletegroup"><h3>Delete User Group</h3></a>
+<p>
+This panel requests confirmation that you wish to delete the User Group you selected on the Admin Panel.
+Select 'yes' to permanently delete the User Group, or 'no' to return to the Admin Panel. You cannot delete
+a User Group if any Users still belong to it. If they do, assign them to a different User Group first.
+</p>
+
+<a name="use-usersettings"><h3>User Settings</h3></a>
+<p>
+This panel allows you to modify the settings of a User Account that already exists or has just been created.
+There are two distinct sections to this panel: the basic settings of the User and their password.
+</p>
+<p>
+The basic settings part consists of the User's name and the User Group to which they are assigned.
+Changing the User Group will change the system access permissions for this User. Once you have made
+the necessary changes, click the 'Save Changes' button to save your modifications. Leaving this page
+without saving will cancel any unsaved changes.
+</p>
+<p>
+The password part allows you to change the User's password. Enter a new password and confirm it, then
+click the 'Change Password' button to set the new password. Leaving this page without saving will
+cancel any unsaved changes.
+</p>
+<p>
+Note that changing the details in one form section, then saving the other section, will not save the
+settings in the first section. Each must be edited and submitted separately.
+</p>
+<p>
+<i>Caution: If editing yourself, <b>do not</b> change your User Group to one lacking Administrator permissions,
+or you will lose your Admin Panel access!</i>
+</p>
+
+<a name="use-deleteuser"><h3>Delete User</h3></a>
+<p>
+This panel requests confirmation that you wish to delete the User you selected on the Admin Panel.
+Select 'yes' to permanently delete the User, or 'no' to return to the Admin Panel.
+</p>
+<p>
+<i>Caution: Do not delete yourself!</i>
+</p>
+
+<a name="use-logs"><h3>System Logs</h3></a>
+<p>
+This panel shows all action logs taken by the system. A log entry is recorded every time any User performs
+an action with an effect on the database or system as a whole. It is useful for tracing actions performed
+to identify where a problem may have occurred.
+</p>
+<p>
+Log entries are displayed in chronological order. Each page displays 20 log entries at most. Use the bar
+along the bottom to select a page number to skip to.
+</p>
+
+<a name="use-compmanage"><h3>Competition Management Panel</h3></a>
+<p>
+This panel acts as a hub for setting up Competition Templates and Days, changing the active Day, and
+managing Records.
+</p>
+<p>
+To create a new Competition Template or Day, enter a name to call it by and click the 'Create' button.
+For creating a new Day, you will also have to specify a Competition Template to derive the Day from
+- make sure that the Template is fully correct before doing so, as you cannot amend the structure of the
+Day once it has been derived. This will create the item and take you to a Settings panel to fill in
+its details.
+</p>
+<p>
+To modify an existing Competition Template or Day, select it from the drop-down list and click the
+'Edit' button. This will take you to the same Settings panel as used when creating an item.
+</p>
+<p>
+It is also possible to change non-structural aspects of a Day that were copied from the Competition
+Template used to make it, namely the names and some output parameters of Teams, Subgroups, Scoring
+Schemes and Events. To do this, select a Day to adjust from the drop-down list and click the 'Adjust'
+button. This will take you to a panel with a similar layout to the Competition Template Settings panel,
+however, only certain non-structural fields can be changed.
+</p>
+<p>
+To delete an existing Competition Template or Day, select it from the drop-down list and click the
+'Delete' button. This will require confirmation, as once performed it cannot be undone.
+</p>
+<p>
+To change the currently active Day, select an existing Day from the drop-down list and click the
+'Set as Active Day' button. The change will be reflected in the system's title bar on the page load
+after the change has been processed.
+</p>
+<p>
+To manage the base Records for a Day, select that Day from the drop-down list and click the 'Manage
+Records' button. This will take you to a panel where the base Record data can be viewed and modified.
+</p>
+
+<a name="use-templatesettings"><h3>Competition Template Settings</h3></a>
+<p>
+This panel allows you to modify the settings of a Competition Template that already exists or has just
+been created. Note that changing the content of a Competition Template will only affect Days derived
+from it <i>after</i> these changes have been made, and will not retroactively change existing Days derived
+from this Template. It is not compulsory to keep Templates for Days once the Days are made, but it is
+useful for repeating Competitions, such as annual tournaments, as the Template can be reused.
+</p>
+<p>
+This panel has five sections to fill in. The earlier sections have an effect on the later sections,
+so <i>it is strongly recommended that you fill in the sections in the order they are given</i> on the page.
+Any changes to a section which resize or redefine the layout of a later section will cause data currently
+stored there to be lost. Therefore, it is useful to plan out exactly what the Competition Template will
+look like before entering it into the system. Consult the section
+'<a href="#intro-developcompo">How to work out if a Competition is supported by the system</a>' in this
+Guide for help with this.
+</p>
+<p>
+First, enter the basic details. These are the name of the Template and the maximum number of Events a
+single Competitor may take part in (note that if a Competitor goes over this limit during a Day, it is
+warned about on the Landing Page, but the system will not attempt to prevent it). These values do not
+affect the rest of the form, so can be changed at any time.
+</p>
+<p>
+Next, enter the list of Teams taking part in this Competition. To add a new Team, click the 'Add New Team'
+button and enter the Team's name in the text box. To remove a team, click the 'Remove' button next to it.
+The name of any existing Team can be edited through its text box at any time - it is not necessary to remove
+it and re-add it. The number of Teams affects the number of Score elements in the Scoring Schemes section
+later, so try to avoid needing to change the number of Teams once you get that far (renaming them is alright).
+</p>
+<p>
+Now enter the list of Subgroups for this Competition. Adding, editing and removing Subgroups works in
+exactly the same way as for Teams. The entire Subgroups list affects the options in the Events section
+later, so try to avoid needing to change the names of or number of Subgroups once you get that far.
+</p>
+<p>
+The next step is to add Scoring Schemes. Each Scoring Scheme consists of seven components: the name, the
+number of Competitors entered per Team (into an Event using this Scheme), whether first place should be
+awarded to the highest or lowest value results, the type of measurement taken for these results (such as
+Distance or Time), the units these measurements are taken in (such as metres or seconds), the minimum number
+of decimal places to which values in these units should always be represented, and finally the Scores
+themselves. The number of Score boxes depends on the number of Teams already entered, and the number of
+Competitors entered per Team for this Scoring Scheme. Therefore, try to avoid changing either of these
+values once you start entering Scores, or you will have to re-enter them. Adding, editing and removing a
+Scheme works in the same way as before. The Scoring Scheme itself affects part of the Events section later,
+so try to avoid changing the names of or numbers of any Scoring Schemes once you start adding Events.
+</p>
+<p>
+The finally section to enter data for is the Events section. Each Event has four settings, each requiring
+a short explanation. The name of the Event is simply its name - that is not complicated. The number of
+Competitors entering per Team is also fairly straightforward; however its value affects which Scoring
+Schemes may be selected for this Event. Only Scoring Schemes with the same number of Competitors per Team
+as this Event may be selected for it. These are the third setting, which are a simple drop-down list of
+all the existing Scoring Schemes, of which you must select one for this Event. Finally, there is a
+multiple-selection box of all the existing Subgroups. These are the Subgroups that are eligible to take
+part in this Event. This may be one or many Subgroups. To select many Subgroups, hold down the Control
+(Ctrl) key while selecting each Subgroup.
+</p>
+<p>
+Once all the data has been entered, click the 'Save Changes' button. The entire Template will be saved
+into the database, and be ready to have Days derived from it.
+</p>
+
+<a name="use-deletetemplate"><h3>Delete Competition Template</h3></a>
+<p>
+This panel requests confirmation that you wish to delete the Competition Template you selected on the
+Competition Management panel. Select 'yes' to permanently delete the Template, or 'no' to return to
+the Competition Management panel. Unless a Template was created by mistake, it is generally not advisable
+to delete Templates - they do not take up a large amount of space, and tend to contain valuable data
+that you may wish to reuse.
+</p>
+
+<a name="use-daysettings"><h3>Day Settings</h3></a>
+<p>
+This panel allows you to modify the settings of a Day that already exists or has just been created.
+When a Day is created, it fully copies all of the settings of the Template it is derived from - however,
+to ensure data consistency, none of these values can be modified from this panel (but it is possible to
+make non-structural changes from the 'adjustment' panel). The Day settings that can be modified are the
+name of the Day, the year it takes place in, whether it should import Records from a previous Day, and
+the Competitors taking part in the Day.
+</p>
+<p>
+Setting the Day name and the Day year is simple - just edit the text boxes, noting that the year <i>must</i>
+be a number. The 'Import Records' option requires more explaining. Records set for a Competition are stored
+with the Day, <i>not</i> with the Competition Template. This is because the Competition Template could
+change, and there is no guarantee we will want to carry over Records to newly created Days (for instance,
+if we add old Days into the system in non-chronological order). However, the system recognises that often
+we <i>will</i> want to carry over existing Record data, hence the existence of this feature. When first
+creating a Day, select the previous Day you wish to copy Records from. When you click 'Save Changes' after
+filling in the rest of the form, the Records as of the end of that Day will be set as the base Records to
+beat for this new Day. <i>Note: This only needs to be done once per Day, or if the Records for the previous
+Day are changed after an import. Selecting the 'Do not import Records' option will not cause Records
+to be blanked - they will simply not be overwritten when the settings are saved.</i>
+</p>
+<p>
+Adding Competitors to the Day is optimised for adding large numbers of Competitors at once. However,
+they must be first subdivided two ways: firstly by Team, and secondly by Subgroup. The Day Settings
+form has a text entry area for each combination of Teams and Subgroups, sorted first by Team and then
+by Subgroup. Either type each name in to the appropriate text entry area, or paste the list in if it
+already exists. Each name should be separated by a new line.
+</p>
+<p>
+A Competitor will typically be a person, but this does not always have to be the case. At its core,
+a Competitor is a single entity taking part in Events - therefore, it could also be several athletes
+working together, such as in a Relay Team; in cases such as this, the Relay Team itself is the Competitor.
+</p>
+<p>
+When you have entered all of the Competitors into each text entry box, click the 'Add Competitors'
+button for that box. This will automatically separate the Competitor name dump into individual
+Competitors, each with their own row. To delete a Competitor, click the 'Remove' button next to their
+name. To edit a Competitor, simply edit their name in their text box. <i>Remember to click 'Add
+Competitors' before saving the Day! Any Competitors not allocated to their own text field, so remaining
+in the data-entry box, will be discarded when the Day is saved!</i>
+</p>
+<p>
+<i>Important Note: You are free to add more Competitors during the scoring process of a Day. You are also
+free to rename them, however to do this, <b>always</b> rename the existing Competitor - <b>never</b>
+remove and re-add them, as the system will count them as two different Competitors. If a Competitor
+already has Scores associated with them, the system will not detect that the Competitor is missing until
+their Score is overwritten by rescoring that Event. Until this occurs, some data for the affected Event
+may not display properly.</i>
+</p>
+<p>
+Once all Competitors and other settings have been set, click the 'Save Changes' button. This will save
+the Day to the database.
+</p>
+
+<a name="use-adjustday"><h3>Adjust Day Components</h3></a>
+<p>
+This panel allows you to rename or change a select few attributes of a Day that it derived from its
+Competition Template that do not affect the overall structure of the Day. The Day structure cannot be
+modified without deleting the Day, modifying the Competition Template, then recreating the Day, in order
+to preserve the integrity of already entered data.
+</p>
+<p>
+The layout of this panel is very similar to the Competition Template Settings panel, however certain fields
+(those that affect structure) are read-only and cannot be modified. The remaining fields can be easily
+changed to modify how the Day data is presented.
+</p>
+<p>
+You are free to change any of the modifiable values, however, <i>if you change the result ordering or score
+values of any Scoring Scheme, you will need to resave all scoresheets for Events using that Scoring Scheme
+via the Edit Scores panel</i>, or the old scoring rules will remain applied to those Events. Changes to any
+other fields do not require further adjustment from other panels.
+</p>
+
+<a name="use-deleteday"><h3>Delete Day</h3></a>
+<p>
+This panel requests confirmation that you wish to delete the Day you selected on the Competition
+Management panel. Select 'yes' to permanently delete the Day, or 'no' to return to the Competition
+Management panel. If you delete the currently active Day, you will need to select a new active Day
+before you can do any more scoring with the system. Unless a Day was created by mistake, it is generally
+not advisable to delete Days - they do not take up a large amount of space, and tend to contain large
+amounts of valuable data.
+</p>
+
+<a name="use-managerecords"><h3>Manage Records</h3></a>
+<p>
+This panel allows you to view and modify the base Records of a Day that already exists. Note that these
+are the <i>base</i> Records - they are the Records to beat for this Day, but they do not contain any Records
+set on this Day. The purpose of this panel is to allow you to make any modifications or tweaks to any
+Records that require correcting. While you can by extension view base Records here, it is recommended
+to use the Analyse Records panel for that task.
+</p>
+<p>
+To change the currently loaded Record, select its Event from the drop-down list. The form will
+automatically update with all of the Record's data. If you wish to modify this data, edit it then click
+the 'Save Changes' button.
+</p>
+
+<a name="use-scoreentry"><h3>Score Entry</h3></a>
+<p>
+This panel acts as a hub for scoring Events in the currently active Day. The summary box at the top of
+the panel lists how many Events have been scored correctly, scored incorrectly (i.e. in an inconsistent
+/ contradictory way), and not yet scored at all. A full breakdown of all Events, their colour-coded
+status and a summary of their results is then listed in the table below. To score an Event, select it
+in this table - this will take you to an Edit Scores panel where you can enter the score data.
+</p>
+
+<a name="use-editscore"><h3>Edit Event Scores</h3></a>
+<p>
+This panel allows you to score an Event in the currently active Day that you have selected from the
+Score Entry hub panel. At the top of the form is a message informing you of the currently scoring status
+of this Event. The rest of the form is dedicated to the data entry itself.
+</p>
+<p>
+Each Team is listed in the form, and for each Team there are as many scoring rows as there were 'Entrants
+per Team' specified in the Competition Template that this Day was derived from. You will probably
+receive the scores you are to enter on a score card of some description. Simply copy the data into
+this form. The available Competitors to assign a score to will be limited to those in Subgroups that
+are eligible for this Event. If a Competitor is missing from the list, then select the 'Missing From List'
+option as the Competitor. A sub-form will appear under this data row, into which you should enter the
+name of the new Competitor and the Subgroup they should belong to. If your Event (like most typical Events)
+is only open to a single Subgroup, then that will be the only available Subgroup. If it is open to many,
+then you will have to select one. Upon submission of the form, any missing Competitors will be added to
+the appropriate Competitor list. This will happen regardless of whether or not the data submission was
+successful (i.e. regardless of whether you made any mistakes, unless those mistakes were with the missing
+Competitor's new details), so if you submit a scoresheet that has problems, you should see your new Competitor
+in the drop-down list. It is also possible for a User with the appropriate permissions to add missing
+Competitors directly into the Day Settings panel, however this can be cumbersome. That panel will be
+required should you get the new Competitor's details wrong, however.
+</p>
+<p>
+Once you have entered the score data for this Event, check it carefully, then click the 'Save Changes'
+button. This will save the Score to the database. If the system agrees that your score data makes sense,
+it will mark the scores as 'consistent' which will display in green. While this does not guarantee that
+your scores are error free, it means any obvious errors will have been detected. However, if any of
+your score data is contradictory, such as the Competitor in second place having a better result than the
+person in first place, then the system will mark these scores as 'inconsistent' which will display in red.
+If this occurs, you should carefully check the data you have entered and correct any mistakes. You may
+edit score data already inputted as many times as you want, even if it was marked as consistent the
+first time.
+</p>
+
+<a name="use-liveresults"><h3>Live Results</h3></a>
+<p>
+This panel allows you to view the results for the currently active Day presented in a variety of formats.
+This data updates live - this means that if a User inputs a new set of scores from another computer into
+the system, they will appear on this results panel automatically!
+</p>
+<p>
+The panel fetches new data from the server at a fixed time interval. By default this is 5 seconds, but
+you can change this by changing the value in the control panel box at the top of the page. If you want
+to stop the panel from automatically updating, set this value to 0 seconds. You may trigger a one-off
+update by clicking the 'Manual Update' button.
+</p>
+<p>
+There are four information panes and a progress bar in this panel. The progress bar shows the number
+of Events correctly scored so far out of how many Events there are in total. The remaining four
+information panes show the current overall scores for each Team, a list of any and all broken Records,
+a list of the highest scoring Competitors in each Subgroup, and a full breakdown of all results for all
+Events. Each of these information panes can be minimised by clicking on its title bar, and re-shown by
+clicking again. In the Event Scores pane, clicking an Event's name will toggle the visibility of a full
+breakdown of the Scores for that Event.
+</p>
+
+<a name="use-stats"><h3>Statistical Analysis</h3></a>
+<p>
+This panel acts a hub through which six statistical analysers can be accessed. Each of these panels
+will produce a data table of a different sort based on a combination of sources selected. Each of
+these panels works in a similar way, so all six will be detailed at once here.
+</p>
+<p>
+The six panels available are:
+</p>
+<ul>
+<li>Analyse Days - compares overall statistics about each of the selected Days.</li>
+<li>Analyse Events - compares results and records for each of the selected Events.</li>
+<li>Analyse Teams - compares results, records and scores for each of the selected Teams.</li>
+<li>Analyse Competitors - compares results and records for each of the selected Competitors.</li>
+<li>Analyse Records - produces a table of all records for each of the selected Days, as at the end of
+those days; any newly set records are highlighted.</li>
+<li>Produce Scoresheet - produces a summary table of results from a single selected Day, intended for
+distribution to interested parties.</li>
+</ul>
+<p>
+In each panel, you can select which items you want to compare. You may compare as many or as few items
+as you want, and there does not have to be any relation between them such as being on the same Day.
+This allows you to compare the same Competitor across multiple Days, or to track a Team's progress over
+time. For any lists of Events, the rows are automatically cross-referenced so that different Days with
+the same (named) Events can be easily compared. Once you have selected what you want to compare, you
+can click the 'Generate Table' button to produce the analysis table.
+</p>
+<p>
+The Produce Scoresheet panel has some unique options available to it, which affect how much information is
+displayed in the output. Most of these are self-explanatory, however note that the checkboxes for displaying
+only Events open to certain Subgroups will show any Event into which <i>at least one</i> of the selected
+Subgroups may enter, so if an Event is open to all Subgroups, selecting any one of those boxes will have
+that Event appear. Note also that these options do not affect what data is collected in the summary table
+- that data will always cover the entire Day.
+</p>
+<p>
+As well as generating a results table within the system, this panel can also generate the same table
+as a Word document or Excel spreadsheet. These files can be downloaded; however it is recommended that
+you resave the files after downloading them due to technical constraints in how they are produced.
+</p>
+
+<a name="use-help"><h3>Getting Help</h3></a>
+<p>
+Help with using the system is available in two forms while actually using the system. Firstly, inline
+help messages are displayed on all panels where necessary to guide you while using them. This includes
+both success and error messages that display when an action is taken to help inform you on what to do
+next. However, if these are not helpful, a second form of online help is available, and that is...
+this User Guide! A copy of this User Guide can be accessed from the 'Help' link in the menu. You may
+even be reading it now! Additionally, every panel has a link to its section of this Guide in the top
+right corner of the page.
+</p>
+ 
+<a name="faq"><h2>Quick Starters, Frequently Asked Questions, Troubleshooting and Other Miscellany</h2></a>
+<p>
+The following points deal with common questions and problems, including common tasks that it may not
+be immediately clear how best to perform. If you have a question that is not answered here or anywhere
+else in this Guide, please get in contact using the details at the end of this Guide to request technical
+support.
+</p>
+
+<a name="faq-browsers"><h3>What web-browsers is the system supported on?</h3></a>
+<p>
+This system will work in Google Chrome and Mozilla Firefox (and should work in any standards compliant
+browser). <a href="https://www.google.com/chrome">Chrome</a> is recommended, as it is the browser
+the system was primarily built and tested on. The system can also run on iPad!
+</p>
+
+<a name="faq-adminfail"><h3>Help! I have lost access to / accidentally deleted all of the User Accounts with administrator access on the system!</h3></a>
+<p>
+Should you lose access to your administrator account(s), follow the instructions given in the
+'<a href="#maintain-adminfix">Fixing deleted administrator users</a>' section of this Guide.
+</p>
+
+<a name="faq-access"><h3>Help! I cannot access part of the system!</h3></a>
+<p>
+Access to each part of the system is controlled by permissions set to the User Group to which your
+account belongs. If you are an administrator, you can change these privileges yourself; otherwise,
+ask your administrator if you think you should have access to a section you cannot see. Additionally,
+note that sections of the website that require an Active Day to be set (such as Score Entry and Live
+Results) will be inaccessible if an Active Day is not set. The Active Day can be set in the Competition
+Management Panel.
+</p>
+
+<a name="faq-prepare"><h3>How do I set up the system before a competition starts?</h3></a>
+<p>
+Before a (real-world) competition starts, you will need to set up the system to handle it. The procedure
+for this is relatively straight forward.
+</p>
+<ol>
+<li>
+	If a Competition Template already exists for this competition, check all of its settings are valid and
+	up-to-date by selecting to edit it in the Competition Management Panel. Should a Template not already
+	exist, create it via the Competition Management Panel. See the
+	'<a href="#use-compmanage">Competition Management Panel</a>' section of this Guide for more information.
+</li>
+<li>
+	Once you have a Competition Template prepared, create a new Day in the Competition Management Panel,
+	using the Competition Template as its base template.
+</li>
+<li>
+	Enter the name of the Day, the year it is taking place in, and, if this Day is one in a series of Days
+	based on similar Templates and you want Records from a previous Day to carry over to this one, select
+	that previous Day to Import Records from. Finally, add all of the Competitors who could be taking part
+	in this Day. See the '<a href="#use-daysettings">Day Settings</a>' section of this Guide for more
+	information.
+</li>
+<li>
+	Once you have saved your new Day, set it as the currently active Day from the Competition Management
+	Panel. You are now ready to go!
+</li>
+</ol>
+
+<a name="faq-score"><h3>How do I score Events?</h3></a>
+<p>
+To score Events on the currently active Day, go to the Score Entry section of the system and select an
+Event to score. Events that have been scored are highlighted green, except those containing an error
+which are highlighted red, and are ignored by the system for scoring purposes.
+</p>
+
+<a name="faq-results"><h3>How do I find out what the current Scores are / what Records have been broken / who has won the 'Victor Ludorum'?</h3></a>
+<p>
+All information about the currently active Day is available on the Live Results panel, which updates
+live as new information is entered into the system. 'Victor Ludorum' winners are listed as the 'Current
+Highest Individual Scores' on this panel.
+</p>
+
+<a name="faq-records"><h3>How do I get a list of all the current Records for a competition?</h3></a>
+<p>
+The Records for a Day can be accessed from the Analyse Days panel (accessed through Statistical Analysis).
+If you have used the 'Import Records' feature when creating the Day, then it should list all previous
+Records, as well as the newly broken ones. Records broken on this Day will be highlighted.
+</p>
+
+<a name="faq-sharing"><h3>How do I share data from the system after a competition, such as if a staff member wants access?</h3></a>
+<p>
+Depending on your needs, there are several ways of giving people access to data collected by the system.
+</p>
+<p>
+If simple statistics are all that are needed, then you could simply generate a datasheet using one of panels
+in the '<a href="#use-stats">Analyse Statistics</a>' section. Follow the link for help on using that section.
+</p>
+<p>
+If you need to actually share access to the system, for instance so that scores can be verified by the
+person in charge of the competition, then you have two options. If the server is running from a laptop
+or other portable device, you could simply make the device available to the person who wants access.
+Alternatively, you could place a copy of the system on a publicly accessible webserver - this will also
+be the option you want to choose if you want to share the system with multiple people.
+</p>
+<p>
+To place a copy of the system on a web server, first install a fresh copy of the system onto your web server
+by following the <a href="#install">Installation Instructions</a>. Then take an SQL dump from the original system,
+by following the <a href="#maintain-backup">Backup Procedure</a>. However, instead of restoring the backup to the
+original system, restore it to the new server. You will now have a duplicate system set up. Note that these two
+systems will be distinct - changes on what will not be automatically reflected on the other. To transfer changes
+made on one system to another, simply back up the most recent system and restore it to the other one.
+</p>
+ 
+<a name="contact"><h2>Contact Details</h2></a>
+<p>
+If you have a question or problem that is not answered by this Guide, then you can contact the creator
+of the system at the following email address:<br>
+<a href="mailto:jamesad.wallis@googlemail.com">jamesad.wallis@googlemail.com</a>
+</p>
+<p>
+Please try to be as descriptive as possible when describing a problem so you can be assisted faster.
+</p>
+<p>
+I should hopefully still be using that email address for many years (decades?) to come, ignoring unforseeable
+disturbances such as the destruction of the internet or me being placed on a Witness Protection Programme.
+Don't be afraid to give it a try if you have any problems - there's a good chance I should respond.
+</p>
+</span>

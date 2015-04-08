@@ -1,0 +1,58 @@
+Wednesday 23rd May 2012
+- Began post-coursework changes.
+- Individual high scores on Live Results and Analyse Days pages now show the score achieved.
+- New records are now correctly processed if base records have not been set.
+- Spaced out main menu links slightly.
+- Added system information box to sidebar.
+
+Saturday 26th May 2012
+- Added t_id field to day_scores table to store team id of competitor given by c_id.
+	- While this can be extrapolated from the day_competitors table at the moment, this is to allow a DNC score with no competitor to be associated with a team.
+	- Also gave values to this new column based on existing database values.
+- Made it possible to not have a competitor entered for any DNC scores.
+	- Adjusted various other parts of the system to take account of this.
+- Added ability to add competitors from the Edit Scores panel.
+- Added counts_to_limit field to comtem_events and day_events tables to represent whether an event should count towards the events per competitor limit.
+- New counts towards limit setting can now be set in Competition Template Settings panel and is copied across to new Days when they are derived from a Template.
+- New counts towards limit setting is taken account of when checked for competitors who have exceeded the maximum events per competitor limit.
+- Blank input is now accepted for result for DNC scores.
+** Released as Version 1.01 **
+
+Tuesday 29th May 2012
+- Fixed bugs with how new records were calculated.
+- Added function to return total score for each team, split by subgroup.
+- Added new statistcal analysis tool to produce scoresheets.
+** Released as Version 1.02 **
+
+Wednesday 30th May 2012
+- Added function to convert from seconds to minutes and seconds.
+- All output interfaces that display results automatically convert anything with units 'seconds' into 'minutes'.
+- Extended data available on Produce Scoresheet page.
+** Released as Version 1.03 **
+
+Thursday 5th July 2012
+- Added ability to set minimum number of decimal places output for results.
+	- Added inputs and functionality for decimal places in Template Settings panel (and made some minor formatting adjustments).
+	- Added corresponding database field result_units_dp to comtem_scoreschemes and day_scoreschemes tables.
+	- This data is properly copied when making a new Day.
+	- Modified truncate_number helper function to facilitate minimum decimal place output processing, and updated the neccessary calls to this function.
+
+Friday 6th July 2012
+- Automatic conversion of anything with units 'seconds' to 'minutes' now only occurs for values greater than or equal to 60 seconds.
+- Some minor formatting adjustments to some Statistical Analysis pages.
+
+Sunday 8th July 2012
+- Produce Scoresheet page now has additional options:
+	- Show / hide units.
+	- Show / hide summary table.
+	- Only show data for Events open to specific Subgroups.
+- Added interface for new Adjust Day Components page.
+
+Monday 9th July 2012
+- Completed processing for new Adjust Day Components page.
+
+Tuesday 10th July 2012 - Sunday 15th July 2012
+- Edited the help documentation to be up-to-date with recent changes.
+- Made some miscellaneous tweaks and bits of preparation for the final launch of the system.
+- Did the above very slowly because procrastination and laziness.
+** Release as Version 1.04 **

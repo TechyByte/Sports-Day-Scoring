@@ -1,0 +1,55 @@
+-----
+v1.04
+-----
+- It is now possible to set the minimum number of decimal places to output
+   results to under a given scoring scheme.
+- Automatic conversion of results with units 'seconds' to minutes now only
+   occurs if the result has a value equal to or greater than 60 seconds.
+- Produce Scoresheets page now has additional options:
+	- Show / hide units.
+	- Show / hide summary table.
+	- Only show data for Events open to specific Subgroups.
+- A new panel, Adjust Day Components, has been added. Use this to adjust
+   non-structural parts of a Day that were defined in the Competition Template.
+- Various minor formatting tweaks to some sections.
+- The help files and default database dump have been updated to reflect all the
+   changes made since the original 'project' version.
+
+
+-----
+v1.03
+-----
+- Produce Scoresheets page now has additional data.
+- All pages that output results automatically convert to minutes anything with
+   the units 'seconds'. (note: data must still be inputted in seconds)
+
+
+-----
+v1.02
+-----
+- New Statistical Analysis panel for producing scoresheets.
+- Bugfixes to display of new Records set in certain circumstances.
+
+
+-----
+v1.01
+-----
+- Highest individual scores per subgroup shown in Live Results panel now show
+   the score achieved.
+- Events can now be set not to count towards the maximum events per competitor
+   limit.
+- A Did Not Compete score can now not have a competitor or score assigned to
+   it, allowing a team to simply not compete in an event at all.
+- Competitors can now be added to an event from the scoring panel, to allow
+   missing competitors to be easily added by scorers without editing the Day
+   itself.
+- Setting new records when no existing record has been set now processes
+   correctly.
+
+
+-----
+v1.00
+-----
+- Initial release.
+- Version submitted for A2 Computing Project.
+- All system parts as described in coursework write-up.
